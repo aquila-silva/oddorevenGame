@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Press Start 2P", system-ui;
+}
+
+.formBotoes {
+    display: flex;
+    justify-content: right;
+    border:1px solid black;
+    padding: 10px;
+    background-color: black;
+}
+
+div>p{
+    cursor: pointer;
+}
+
+.formBotoes input[type="button"] {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: yellow;
+    color: black;
+    border: none;
+    outline: rgb(1, 242, 255) solid 2px;
+    outline-offset: 2px;
+    margin-left: 15px;
+    transition: all 0.1s;
+}
+.formBotoes select{
+    display: block;
+    position: absolute;
+    border-radius: 15px;
+    text-align: center;
+    left: 10px;
+    width: 200px;
+    height: 80px;
+    justify-self: left;
+    background-color: yellow;
+    outline: rgb(1, 242, 255) solid 2px;
+    outline-offset: 2px;
+    margin-left: 15px;
+    transition: all 0.1s;
+}
+.formBotoes input[type="button"]:hover,  .formBotoes select:hover{
+    background-color: rgb(1, 242, 255);
+    outline: yellow solid 2px;
+    color: rgb(1, 242, 255);
+    cursor: pointer;
+    color: black;
+}
+
+.formBotoes input[type="button"]:active {
+    transform: scale(0.9);
+}
+
+.boxNroAleatorio {
+    display: flex;
+    justify-content: center;
+}
+.boxNroAleatorio p {
+    margin-top: 100px;
+    font-size: 150px;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0px;
+    padding: 50px;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+footer span{
+    margin-right: 30px;
+}

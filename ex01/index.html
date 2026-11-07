@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js" defer type="module"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form class="formBotoes">
+        <select name="dificuldade" id="selecDif">
+            <option value="1000">fácil</option>
+            <option value="400">médio</option>
+            <option value="150">difícil</option>
+        </select>
+
+        <input type="button" value="Play" id="btnPlay">
+        <input type="button" value="Pause" id="btnPause">
+        <input type="button" value="Stop" id="btnStop">
+
+    </form>
+    <div class="boxNroAleatorio">
+        <p id="nroAleatorio">_</p>
+    </div>
+
+    <footer>
+
+        <p>Total: <span id="total">_</span> </p>
+        <p>Acertos: <span id="acertos">_</span></p>
+        <p>Erros: <span id="erros">_</span></p>
+        
+    </footer>
+    
+</body>
+</html>
