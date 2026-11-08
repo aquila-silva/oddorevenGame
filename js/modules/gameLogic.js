@@ -4,10 +4,10 @@ let resultados = {
     erros: 0
 };
 
-// Controla se o usuário já interagiu com o número atual da rodada
+// Variável que controla se o usuário já interagiu com o número atual
 let jaClicou = false; 
 
-function gerarNumero(elementoNumero) {
+function gerarNumero(elementoNumero, elementoTotal, elementoAcertos, elementoErros) {
     jaClicou = false; // Reseta a flag para o novo número
     
     let random = Math.floor((Math.random() * 100) + 1);
@@ -19,6 +19,7 @@ function gerarNumero(elementoNumero) {
     if (random % 2 === 0) {
         resultados.total++;
     }
+    atualizaResultados(elementoTotal, elementoAcertos, elementoErros)
 }
 
 function atualizaResultados(elementoTotal, elementoAcertos, elementoErros) {

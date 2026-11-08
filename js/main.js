@@ -5,7 +5,7 @@ import { iniciarPartida, pararPartida, idTempo} from './modules/timer.js';
 let resultados = gameLogic.resultados;
 
 document.getElementById("btnPlay").addEventListener("click", function(){
-    iniciarPartida(function(){gameLogic.gerarNumero("nroAleatorio")}, "selecDif");
+    iniciarPartida(function(){gameLogic.gerarNumero("nroAleatorio", "total", "acertos", "erros")}, "selecDif");
     gameLogic.atualizaResultados("total", "acertos", "erros");
 })
 
