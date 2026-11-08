@@ -13,3 +13,7 @@ document.getElementById("nroAleatorio").addEventListener("click", function(){
     gameLogic.validaAcerto("nroAleatorio");
     gameLogic.atualizaResultados("total", "acertos", "erros");
 })
+
+document.getElementById("btnPause").addEventListener("click", function(){
+    pararPartida();
+})
