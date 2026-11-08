@@ -1,11 +1,16 @@
 import gameLogic from './modules/gameLogic.js';
 
-import { iniciarPartida, pararPartida, idTempo} from './modules/timer.js';
+import { iniciarPartida, pararPartida, relogio} from './modules/timer.js';
 
-let resultados = gameLogic.resultados;
+
 
 document.getElementById("btnPlay").addEventListener("click", function(){
-    iniciarPartida(function(){gameLogic.gerarNumero("nroAleatorio", "total", "acertos", "erros")}, "selecDif");
+    iniciarPartida(
+        function(){gameLogic.gerarNumero("nroAleatorio", "total", "acertos", "erros")},
+        "selecDif",
+        function(){ relogio("timerRodada", 30)}
+    )
+
     gameLogic.atualizaResultados("total", "acertos", "erros");
 })
 

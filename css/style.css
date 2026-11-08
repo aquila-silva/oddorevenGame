@@ -19,6 +19,15 @@ div>p{
     cursor: pointer;
 }
 
+.formBotoes span{
+    position: fixed;
+    left: 50%;
+    align-self: center;
+    display: block;
+    color: white;
+    text-align: center;
+}
+
 .formBotoes input[type="button"] {
     width: 80px;
     height: 80px;
