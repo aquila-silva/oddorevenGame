@@ -9,9 +9,7 @@ function validaSecao(chaveLogin){
 }
 
 function usuarioLogado(chaveLogin){
-   
-    let usuarioLogado = JSON.parse(localStorage.getItem(chaveLogin));
-    return usuarioLogado;
+    return JSON.parse(localStorage.getItem(chaveLogin));
 }
 
 function encerarSecao(){
@@ -26,7 +24,7 @@ function cadastrarUsuario(loginDigitado, senhaDigitada, chaveUsuariosCadastrados
         usuariosCadastrados = JSON.parse(usuariosCadastrados);
     }
 
-    usuariosCadastrados.push({login: loginDigitado, senha: senhaDigitada});
+    usuariosCadastrados.push({id: Date.now(), login: loginDigitado, senha: senhaDigitada});
 
     localStorage.setItem(chaveUsuariosCadastrados);
 
@@ -52,4 +50,12 @@ function validaCadastro(loginDigitado, senhaDigitada, chaveUsuariosCadastrados){
         
         return cadastroDuplicado;
     }
+}
+
+export default{
+    validaSecao,
+    usuarioLogado,
+    encerarSecao,
+    cadastrarUsuario,
+    validaCadastro
 }

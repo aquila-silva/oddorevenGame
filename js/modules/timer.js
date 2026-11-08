@@ -1,11 +1,26 @@
 
+export let idTempo = null; 
 
-function gerarNumero(elementoId){
-    random = parseInt((Math.random()*100) + 1);
-    document.getElementById(elementoId).innerHTML = random;
-    return random;
+export function iniciarPartida(gerarNumero, idSelectNivel) { 
+    let nivel = document.getElementById(idSelectNivel).value;
+    
+    if (nivel === "") {
+        alert("Selecione um nível para iniciar a partida");
+        return;
+    } 
+    
+
+    if (idTempo) {
+        clearInterval(idTempo);
+    }
+
+    idTempo = setInterval(gerarNumero, parseInt(nivel));
 }
 
-export default{
-    gerarNumero
+
+export function pararPartida() {
+    if (idTempo) {
+        clearInterval(idTempo);
+        idTempo = null;
+    }
 }
