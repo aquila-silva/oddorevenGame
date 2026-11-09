@@ -1,6 +1,6 @@
 import gameLogic from './modules/gameLogic.js';
 
-import { iniciarPartida, pararPartida, relogio} from './modules/timer.js';
+import { iniciarPartida, pausarPartida, relogio, encerrarPartida} from './modules/timer.js';
 
 
 
@@ -20,5 +20,13 @@ document.getElementById("nroAleatorio").addEventListener("click", function(){
 })
 
 document.getElementById("btnPause").addEventListener("click", function(){
-    pararPartida();
+    pausarPartida();
+    
+})
+
+document.getElementById("btnStop").addEventListener("click", function(){
+    if(confirm("tem certeza que deseja apagar os resultados da partida atual?")){
+        gameLogic.encerrarPartida("total", "acertos", "erros");
+        encerrarPartida("timerRodada");
+    }
 })

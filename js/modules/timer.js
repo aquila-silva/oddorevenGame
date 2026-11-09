@@ -44,14 +44,17 @@ export function relogio(elementoCronometro, tempoMaximo){
             tempoRodado.segundos = 0;
             tempoRodado.minutos++;
         }
+    }else if(tempoMaximo == 0){
+        document.getElementById(elementoCronometro).innerHTML = `00 : 00`; 
+        return;
     }else{
-        pararPartida();
+        pausarPartida();
 
         gameLogic.atualizaResultados("total", "acertos", "erros");
 
         let resultados = gameLogic.resultados;
         
-        alert(`Rodada Finalizada!\nResultados:\nTotal: ${resultados.total}\nAcertos: ${resultados.acertos}\nErros: ${resultados.erros}` 
+        alert(`Partida Finalizada!\nResultados:\nTotal: ${resultados.total}\nAcertos: ${resultados.acertos}\nErros: ${resultados.erros}` 
         );
 
         return;
@@ -69,7 +72,7 @@ export function relogio(elementoCronometro, tempoMaximo){
    }
 }
 
-export function pararPartida() {
+export function pausarPartida() {
     if (idTimerNumeros) {
         clearInterval(idTimerNumeros);
         idTimerNumeros = null;
@@ -79,4 +82,20 @@ export function pararPartida() {
         clearInterval(idTempoRodada);
         idTempoRodada = null;
     }
+}
+
+export function encerrarPartida(elementoCronometro){
+
+    if (idTimerNumeros) {
+        clearInterval(idTimerNumeros);
+        idTimerNumeros = null;
+    }
+
+    if (idTempoRodada) {
+        clearInterval(idTempoRodada);
+        idTempoRodada = null;
+    }
+    relogio(elementoCronometro, 0);
+    tempoRodado.minutos = 0;
+    tempoRodado.segundos = 0;
 }

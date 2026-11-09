@@ -46,9 +46,17 @@ function validaAcerto(elementoNumero) {
     }
 }
 
+function encerrarPartida(elementoTotal, elementoAcertos, elementoErros){
+    resultados .total = 0;
+    resultados.acertos = 0;
+    resultados.erros = 0;
+    
+    atualizaResultados(elementoTotal, elementoAcertos, elementoErros);
+}
 export default {
     resultados,
     gerarNumero,
     atualizaResultados,
-    validaAcerto
+    validaAcerto,
+    encerrarPartida
 };
