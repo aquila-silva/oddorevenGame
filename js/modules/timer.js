@@ -71,16 +71,15 @@ export function temporizadorPartida(elementoCronometro){
             tempoRodado.minutos--;
             tempoRodado.segundos = 59;
         }
-      
+        exibirTemporizador(elementoCronometro);
     }else{
 
         encerrarPartida(elementoCronometro);
+        exibirTemporizador(elementoCronometro);
         return true;
 
     }
 
-    exibirTemporizador(elementoCronometro);
-    return false;
 }
 
 
@@ -101,7 +100,6 @@ export function encerrarPartida(elementoCronometro){
     clearInterval(idTempoRodada);
     clearInterval(idTimerNumeros);
 
-    exibirTemporizador(elementoCronometro);
     tempoRodado.minutos = 0;
     tempoRodado.segundos = 0;
 }
