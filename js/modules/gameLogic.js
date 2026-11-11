@@ -37,26 +37,39 @@ function validaAcerto(elementoNumero) {
 
     jaClicou = true; // Bloqueia novos cliques até o próximo número
 
-    if (numero % 2 === 0) {
-        el.style.color = "green";
-        resultados.acertos++;
-    } else {
-        el.style.color = "red"; 
-        resultados.erros++;
+
+    if(el.innerHTML != "_"){
+    
+        if (numero % 2 === 0) {
+            el.style.color = "green";
+            resultados.acertos++;
+        } else {
+            el.style.color = "red"; 
+            resultados.erros++;
+        }
     }
+    
 }
 
-function encerrarPartida(elementoTotal, elementoAcertos, elementoErros){
-    resultados .total = 0;
+function exibeResultados(elementoTotal, elementoAcertos, elementoErros){
+    alert(`Partida Finalizada!\nResultados:\nTotal de números pares sorteados: ${resultados.total}\nAcertos: ${resultados.acertos}\nErros: ${resultados.erros}` 
+    );
+}
+
+function apagarResultados(elementoTotal, elementoAcertos, elementoErros, elementoNumero){
+    resultados.total = 0;
     resultados.acertos = 0;
     resultados.erros = 0;
-    
-    atualizaResultados(elementoTotal, elementoAcertos, elementoErros);
+    document.getElementById(elementoNumero).innerHTML = "_";
+    document.getElementById(elementoNumero).style.color = "Black";
+    atualizaResultados(elementoTotal, elementoAcertos, elementoErros)
 }
+
 export default {
     resultados,
     gerarNumero,
     atualizaResultados,
     validaAcerto,
-    encerrarPartida
+    exibeResultados,
+    apagarResultados
 };

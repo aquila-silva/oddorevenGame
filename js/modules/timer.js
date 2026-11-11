@@ -19,7 +19,7 @@ export function iniciarPartida(gerarNumero, elementoSelectNivel, funcaorelogio) 
     }
 
     if (idTempoRodada) {
-        clearInterval(idTimerNumeros);
+        clearInterval(idTempoRodada);
     }
 
     //tempo da partida
@@ -28,10 +28,7 @@ export function iniciarPartida(gerarNumero, elementoSelectNivel, funcaorelogio) 
     //timer de geração de um novo número
     idTimerNumeros = setInterval(gerarNumero, parseInt(nivel));
      
-    if(tempoRodado.minutos == 1){
-
-        return true;
-    }
+    
 }
 
 export function relogio(elementoCronometro, tempoMaximo){
@@ -48,18 +45,18 @@ export function relogio(elementoCronometro, tempoMaximo){
         document.getElementById(elementoCronometro).innerHTML = `00 : 00`; 
         return;
     }else{
+        
         pausarPartida();
 
         gameLogic.atualizaResultados("total", "acertos", "erros");
 
         let resultados = gameLogic.resultados;
-        
-        alert(`Partida Finalizada!\nResultados:\nTotal: ${resultados.total}\nAcertos: ${resultados.acertos}\nErros: ${resultados.erros}` 
-        );
-
-        return;
+    
+        return true;
         
     }
+
+    return false;
 
    if(tempoRodado.segundos < 10 && tempoRodado.minutos<10){
         document.getElementById(elementoCronometro).innerHTML = `0${tempoRodado.minutos} : 0${tempoRodado.segundos}`
@@ -71,6 +68,7 @@ export function relogio(elementoCronometro, tempoMaximo){
         document.getElementById(elementoCronometro).innerHTML = `${tempoRodado.minutos} : ${tempoRodado.segundos}`
    }
 }
+
 
 export function pausarPartida() {
     if (idTimerNumeros) {
@@ -86,15 +84,9 @@ export function pausarPartida() {
 
 export function encerrarPartida(elementoCronometro){
 
-    if (idTimerNumeros) {
-        clearInterval(idTimerNumeros);
-        idTimerNumeros = null;
-    }
+    clearInterval(idTempoRodada);
+    clearInterval(idTimerNumeros);
 
-    if (idTempoRodada) {
-        clearInterval(idTempoRodada);
-        idTempoRodada = null;
-    }
     relogio(elementoCronometro, 0);
     tempoRodado.minutos = 0;
     tempoRodado.segundos = 0;

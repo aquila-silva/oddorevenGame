@@ -8,7 +8,12 @@ document.getElementById("btnPlay").addEventListener("click", function(){
     iniciarPartida(
         function(){gameLogic.gerarNumero("nroAleatorio", "total", "acertos", "erros")},
         "selecDif",
-        function(){ relogio("timerRodada", 30)}
+        function(){ 
+            if(relogio("timerRodada", 5)){
+            gameLogic.exibeResultados("total", "acertos", "erros");
+            gameLogic.apagarResultados("total", "acertos", "erros", "nroAleatorio");
+            encerrarPartida("timerRodada");
+        }}
     )
 
     gameLogic.atualizaResultados("total", "acertos", "erros");
@@ -26,7 +31,9 @@ document.getElementById("btnPause").addEventListener("click", function(){
 
 document.getElementById("btnStop").addEventListener("click", function(){
     if(confirm("tem certeza que deseja apagar os resultados da partida atual?")){
-        gameLogic.encerrarPartida("total", "acertos", "erros");
         encerrarPartida("timerRodada");
+        gameLogic.exibeResultados("total", "acertos", "erros");
+        gameLogic.apagarResultados("total", "acertos", "erros", "nroAleatorio");
+        
     }
 })
