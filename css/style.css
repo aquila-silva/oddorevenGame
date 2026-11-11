@@ -7,6 +7,13 @@
     font-family: "Press Start 2P", system-ui;
 }
 
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Padrão moderno */
+}
+
 .formBotoes {
     display: flex;
     justify-content: right;

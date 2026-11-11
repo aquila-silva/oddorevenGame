@@ -1,19 +1,30 @@
 import gameLogic from './modules/gameLogic.js';
 
-import { iniciarPartida, pausarPartida, relogio, encerrarPartida} from './modules/timer.js';
+import { iniciarPartida, pausarPartida, temporizadorPartida, encerrarPartida, definirTempoPartida, exibirTemporizador} from './modules/timer.js';
 
-
+definirTempoPartida(20);
+exibirTemporizador("timerRodada");
 
 document.getElementById("btnPlay").addEventListener("click", function(){
+    
+    gameLogic.iniciarPartida("selecDif");
+    
     iniciarPartida(
+
         function(){gameLogic.gerarNumero("nroAleatorio", "total", "acertos", "erros")},
+
         "selecDif",
+
         function(){ 
-            if(relogio("timerRodada", 5)){
+            if(temporizadorPartida("timerRodada")){
+
             gameLogic.exibeResultados("total", "acertos", "erros");
             gameLogic.apagarResultados("total", "acertos", "erros", "nroAleatorio");
+
             encerrarPartida("timerRodada");
-        }}
+
+            }
+        }
     )
 
     gameLogic.atualizaResultados("total", "acertos", "erros");
@@ -34,6 +45,8 @@ document.getElementById("btnStop").addEventListener("click", function(){
         encerrarPartida("timerRodada");
         gameLogic.exibeResultados("total", "acertos", "erros");
         gameLogic.apagarResultados("total", "acertos", "erros", "nroAleatorio");
-        
+        gameLogic.encerrarPartida("selecDif");
+        definirTempoPartida(20);
+        exibirTemporizador("timerRodada");
     }
 })

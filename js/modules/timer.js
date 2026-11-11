@@ -6,6 +6,8 @@ export let idTempoRodada = null;
 
 export let tempoRodado = {minutos: 0, segundos: 0};
 
+
+
 export function iniciarPartida(gerarNumero, elementoSelectNivel, funcaorelogio) { 
     let nivel = document.getElementById(elementoSelectNivel).value;
 
@@ -31,42 +33,54 @@ export function iniciarPartida(gerarNumero, elementoSelectNivel, funcaorelogio) 
     
 }
 
-export function relogio(elementoCronometro, tempoMaximo){
-
-    if(tempoRodado.segundos < tempoMaximo){
-
-        if(tempoRodado.segundos < 60){
-            tempoRodado.segundos++;
-        }else{
-            tempoRodado.segundos = 0;
-            tempoRodado.minutos++;
-        }
-    }else if(tempoMaximo == 0){
-        document.getElementById(elementoCronometro).innerHTML = `00 : 00`; 
-        return;
-    }else{
-        
-        pausarPartida();
-
-        gameLogic.atualizaResultados("total", "acertos", "erros");
-
-        let resultados = gameLogic.resultados;
+export function definirTempoPartida(segundos){
+    if(segundos >= 3600) return;
     
-        return true;
-        
+    if(segundos >= 60){
+        tempoRodado.minutos =parseInt(segundos/60);
+        tempoRodado.segundos = segundos % 60;
+    }else{
+        tempoRodado.minutos = 0;
+        tempoRodado.segundos = segundos;
     }
+}
 
-    return false;
+export function exibirTemporizador(elementoCronometro){
 
-   if(tempoRodado.segundos < 10 && tempoRodado.minutos<10){
+     if(tempoRodado.segundos < 10 && tempoRodado.minutos<10){
         document.getElementById(elementoCronometro).innerHTML = `0${tempoRodado.minutos} : 0${tempoRodado.segundos}`
    }else if(tempoRodado.minutos <10 && tempoRodado.segundos > 9){
         document.getElementById(elementoCronometro).innerHTML = `0${tempoRodado.minutos} : ${tempoRodado.segundos}`
    }else if(tempoRodado.minutos > 9 && tempoRodado.segundos<10){
         document.getElementById(elementoCronometro).innerHTML = `${tempoRodado.minutos} : 0${tempoRodado.segundos}`
+   }else if(tempoRodado.minutos <= 0 && tempoRodado.segundos <= 0){
+        document.getElementById(elementoCronometro).innerHTML = `00 : 00`; 
    }else{
         document.getElementById(elementoCronometro).innerHTML = `${tempoRodado.minutos} : ${tempoRodado.segundos}`
    }
+
+}
+
+export function temporizadorPartida(elementoCronometro){
+
+    if(tempoRodado.segundos > 0 || tempoRodado.minutos > 0){
+        
+        if(tempoRodado.segundos>0){
+            tempoRodado.segundos--;
+        }else if(tempoRodado.segundos <= 0 && tempoRodado.minutos > 0){
+            tempoRodado.minutos--;
+            tempoRodado.segundos = 59;
+        }
+      
+    }else{
+
+        encerrarPartida(elementoCronometro);
+        return true;
+
+    }
+
+    exibirTemporizador(elementoCronometro);
+    return false;
 }
 
 
@@ -87,7 +101,7 @@ export function encerrarPartida(elementoCronometro){
     clearInterval(idTempoRodada);
     clearInterval(idTimerNumeros);
 
-    relogio(elementoCronometro, 0);
+    temporizadorPartida(elementoCronometro, 0);
     tempoRodado.minutos = 0;
     tempoRodado.segundos = 0;
 }

@@ -4,6 +4,24 @@ let resultados = {
     erros: 0
 };
 
+let partidaIniciada = false;
+
+function iniciarPartida(elementoSelectDificuldade){
+    partidaIniciada = true;
+    let select = document.getElementById(elementoSelectDificuldade);
+    select.disabled = true;
+    select.style.color = "Red";
+}
+function encerrarPartida(elementoSelectDificuldade){
+    partidaIniciada = false;
+    let select = document.getElementById(elementoSelectDificuldade);
+    select.disabled = false;
+    select.style.cursor = "pointer";
+    select.style.color = "Black";
+}
+
+
+
 // Variável que controla se o usuário já interagiu com o número atual
 let jaClicou = false; 
 
@@ -71,5 +89,8 @@ export default {
     atualizaResultados,
     validaAcerto,
     exibeResultados,
-    apagarResultados
-};
+    apagarResultados,
+    iniciarPartida,
+    encerrarPartida
+
+}
