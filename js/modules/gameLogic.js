@@ -7,10 +7,14 @@ let resultados = {
 let partidaIniciada = false;
 
 function iniciarPartida(elementoSelectDificuldade){
-    partidaIniciada = true;
+    
     let select = document.getElementById(elementoSelectDificuldade);
-    select.disabled = true;
-    select.style.color = "Red";
+    if(select.value != ""){
+        partidaIniciada = true;
+        select.disabled = true;
+        select.style.color = "Red";
+        select.style.opacity = "0.7"
+    }
 }
 function encerrarPartida(elementoSelectDificuldade){
     partidaIniciada = false;
@@ -18,9 +22,14 @@ function encerrarPartida(elementoSelectDificuldade){
     select.disabled = false;
     select.style.cursor = "pointer";
     select.style.color = "Black";
+    select.style.opacity = "1"
 }
 
-
+function alterarNivel(){
+    if(partidaIniciada){
+        alert("Para alterar o o nível de dificuldade, reinicie a partida selecionando a opção Stop");
+    }
+}
 
 // Variável que controla se o usuário já interagiu com o número atual
 let jaClicou = false; 
@@ -91,6 +100,7 @@ export default {
     exibeResultados,
     apagarResultados,
     iniciarPartida,
-    encerrarPartida
+    encerrarPartida,
+    alterarNivel
 
 }

@@ -50,3 +50,7 @@ document.getElementById("btnStop").addEventListener("click", function(){
         exibirTemporizador("timerRodada");
     }
 })
+
+document.getElementById("selecDif").addEventListener("click", function(){
+    gameLogic.alterarNivel();
+})

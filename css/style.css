@@ -49,19 +49,22 @@ div>p{
     margin-left: 15px;
     transition: all 0.1s;
 }
+
+
 .formBotoes select{
     display: block;
+    left: 80px;
     position: absolute;
+    margin-left: 10px;
     border-radius: 15px;
     text-align: center;
     left: 10px;
-    width: 320  px;
+    width: 325px;
     height: 80px;
     justify-self: left;
     background-color: yellow;
     outline: rgb(1, 242, 255) solid 2px;
     outline-offset: 2px;
-    margin-left: 15px;
     transition: all 0.1s;
 }
 .formBotoes input[type="button"]:hover,  .formBotoes select:hover{
