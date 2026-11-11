@@ -101,7 +101,7 @@ export function encerrarPartida(elementoCronometro){
     clearInterval(idTempoRodada);
     clearInterval(idTimerNumeros);
 
-    temporizadorPartida(elementoCronometro, 0);
+    exibirTemporizador(elementoCronometro);
     tempoRodado.minutos = 0;
     tempoRodado.segundos = 0;
 }
